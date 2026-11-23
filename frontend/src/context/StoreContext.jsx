@@ -7,6 +7,7 @@ const StoreContextProvider = (props) => {
 
     const url = "https://tomato-backend-skqy.onrender.com"
     const [food_list, setFoodList] = useState([]);
+    const [foodListLoaded, setFoodListLoaded] = useState(false);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
     const currency = "₹";
@@ -48,8 +49,12 @@ const StoreContextProvider = (props) => {
     }
 
     const fetchFoodList = async () => {
-        const response = await axios.get(url + "/api/food/list");
-        setFoodList(response.data.data)
+        try {
+            const response = await axios.get(url + "/api/food/list");
+            setFoodList(response.data.data)
+        } finally {
+            setFoodListLoaded(true)
+        }
     }
 
     const loadCartData = async (token) => {
@@ -59,11 +64,20 @@ const StoreContextProvider = (props) => {
 
     useEffect(() => {
         async function loadData() {
-            await fetchFoodList();
-            if (localStorage.getItem("token")) {
-                setToken(localStorage.getItem("token"))
-                await loadCartData({ token: localStorage.getItem("token") })
+            const storedToken = localStorage.getItem("token")
+            const initialRequests = [fetchFoodList()]
+
+            if (storedToken) {
+                setToken(storedToken)
+                initialRequests.push(loadCartData({ token: storedToken }))
             }
+
+            const results = await Promise.allSettled(initialRequests)
+            results.forEach((result) => {
+                if (result.status === 'rejected') {
+                    console.error('Could not load initial app data:', result.reason)
+                }
+            })
         }
         loadData()
     }, [])
@@ -71,6 +85,7 @@ const StoreContextProvider = (props) => {
     const contextValue = {
         url,
         food_list,
+        foodListLoaded,
         menu_list,
         cartItems,
         addToCart,

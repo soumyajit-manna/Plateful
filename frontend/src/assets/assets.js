@@ -2,21 +2,22 @@ import basket_icon from "./basket_icon.png";
 import logo from "./logo.png";
 import logo1 from "./logo1.png";
 import logo2 from "./logo2.jpg";
-import header_img from "./header_img.png";
+import header_img from "./hero-editorial.jpg";
+import auth_editorial from "./auth-editorial.jpg";
 import search_icon from "./search_icon.png";
-import menu_1 from "./menu_1.png";
-import menu_2 from "./menu_2.png";
-import menu_3 from "./menu_3.png";
-import menu_4 from "./menu_4.png";
-import menu_5 from "./menu_5.png";
-import menu_6 from "./menu_6.png";
-import menu_7 from "./menu_7.png";
-import menu_8 from "./menu_8.png";
-import menu_9 from "./menu_9.jpg";
-import menu_10 from "./menu_10.jpg";
-import menu_11 from "./menu_11.jpg";
-import menu_12 from "./menu_12.jpg";
-import menu_13 from "./menu_13.jpg";
+import exploreCombo from "./explore-menu/combo.jpg";
+import exploreSalad from "./explore-menu/salad.jpg";
+import exploreRolls from "./explore-menu/rolls.jpg";
+import exploreBiryani from "./explore-menu/biryani.jpg";
+import exploreChicken from "./explore-menu/chicken.jpg";
+import exploreCake from "./explore-menu/cake.jpg";
+import exploreIceCream from "./explore-menu/ice-cream.jpg";
+import explorePizza from "./explore-menu/pizza.jpg";
+import explorePureVeg from "./explore-menu/pure-veg.jpg";
+import exploreSandwich from "./explore-menu/sandwich.jpg";
+import explorePasta from "./explore-menu/pasta.jpg";
+import exploreDesserts from "./explore-menu/desserts.jpg";
+import exploreNoodles from "./explore-menu/noodles.jpg";
 
 import food_1 from "./food_1.png";
 import food_2 from "./food_2.png";
@@ -72,6 +73,7 @@ export const assets = {
   logo,
   basket_icon,
   header_img,
+  auth_editorial,
   search_icon,
   rating_starts,
   add_icon_green,
@@ -96,55 +98,55 @@ export const assets = {
 export const menu_list = [
   {
     menu_name: "Combo",
-    menu_image: menu_11,
+    menu_image: exploreCombo,
   },
   {
     menu_name: "Salad",
-    menu_image: menu_1,
+    menu_image: exploreSalad,
   },
   {
     menu_name: "Rolls",
-    menu_image: menu_2,
+    menu_image: exploreRolls,
   },
   {
     menu_name: "Biryani",
-    menu_image: menu_9,
+    menu_image: exploreBiryani,
   },
   {
     menu_name: "Chicken",
-    menu_image: menu_10,
+    menu_image: exploreChicken,
   },
   {
     menu_name: "Cake",
-    menu_image: menu_5,
+    menu_image: exploreCake,
   },
   {
     menu_name: "Ice Cream",
-    menu_image: menu_13,
+    menu_image: exploreIceCream,
   },
   {
     menu_name: "Pizza",
-    menu_image: menu_12,
+    menu_image: explorePizza,
   },
   {
     menu_name: "Pure Veg",
-    menu_image: menu_6,
+    menu_image: explorePureVeg,
   },
   {
     menu_name: "Sandwich",
-    menu_image: menu_4,
+    menu_image: exploreSandwich,
   },
   {
     menu_name: "Pasta",
-    menu_image: menu_7,
+    menu_image: explorePasta,
   },
   {
     menu_name: "Deserts",
-    menu_image: menu_3,
+    menu_image: exploreDesserts,
   },
   {
     menu_name: "Noodles",
-    menu_image: menu_8,
+    menu_image: exploreNoodles,
   },
 ];
 

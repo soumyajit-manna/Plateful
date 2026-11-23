@@ -1,0 +1,194 @@
+.plateful-loading-screen {
+    position: fixed;
+    z-index: 12000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    color: #302d24;
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(226, 229, 210, 0.72), transparent 38%),
+        #f5f4eb;
+    animation: plateful-loader-reveal 260ms ease-out both;
+}
+
+.plateful-loading-screen::before,
+.plateful-loading-screen::after {
+    position: absolute;
+    width: min(78vw, 680px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(83, 96, 71, 0.07);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+.plateful-loading-screen::after {
+    width: min(62vw, 540px);
+    border-color: rgba(83, 96, 71, 0.06);
+}
+
+.plateful-loading-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: min(440px, calc(100% - 40px));
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.plateful-loading-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #536047;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 19px;
+}
+
+.plateful-loading-brand svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+}
+
+.plateful-loading-brand span {
+    font-family: inherit;
+}
+
+.plateful-loading-plate {
+    position: relative;
+    display: grid;
+    width: 112px;
+    height: 112px;
+    place-items: center;
+    margin: 34px 0 26px;
+    border: 1px solid rgba(83, 96, 71, 0.18);
+    border-radius: 50%;
+    background: rgba(255, 253, 247, 0.72);
+    box-shadow: 0 14px 38px rgba(55, 66, 43, 0.08), inset 0 0 0 7px rgba(255, 255, 255, 0.72);
+}
+
+.plateful-loading-plate > svg {
+    width: 58px;
+    height: 58px;
+    fill: none;
+    stroke: #536047;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25;
+}
+
+.plateful-loading-plate > svg path {
+    fill: rgba(215, 187, 115, 0.22);
+}
+
+.plateful-loading-orbit {
+    position: absolute;
+    inset: -9px;
+    border: 1px solid transparent;
+    border-top-color: rgba(83, 96, 71, 0.65);
+    border-radius: 50%;
+    animation: plateful-loader-spin 2.8s linear infinite;
+}
+
+.plateful-loading-orbit::after {
+    position: absolute;
+    top: 10px;
+    left: 18px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d7bb73;
+    content: "";
+}
+
+.plateful-loading-eyebrow {
+    color: #687454;
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.19em;
+}
+
+.plateful-loading-content h1 {
+    margin-top: 12px;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: clamp(29px, 5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+}
+
+.plateful-loading-content h1 span {
+    color: #536047;
+    font-style: italic;
+}
+
+.plateful-loading-caption {
+    margin-top: 18px;
+    color: #817d70;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.plateful-loading-progress {
+    width: 118px;
+    height: 2px;
+    margin-top: 13px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(83, 96, 71, 0.14);
+}
+
+.plateful-loading-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: #536047;
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: plateful-loader-progress 1.55s cubic-bezier(0.55, 0, 0.35, 1) forwards;
+}
+
+@keyframes plateful-loader-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes plateful-loader-progress {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes plateful-loader-reveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .plateful-loading-screen {
+        animation: none;
+    }
+
+    .plateful-loading-orbit {
+        animation: none;
+        border-top-color: rgba(83, 96, 71, 0.28);
+    }
+
+    .plateful-loading-progress span {
+        transform: scaleX(1);
+        animation: none;
+    }
+}

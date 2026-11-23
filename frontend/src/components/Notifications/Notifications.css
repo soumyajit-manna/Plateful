@@ -1,0 +1,120 @@
+.plateful-toast-container {
+    z-index: 11000;
+    width: min(390px, calc(100vw - 32px));
+    padding: 0;
+}
+
+.plateful-toast {
+    --plateful-toast-accent: #536047;
+    --plateful-toast-tint: #e8ebdd;
+    display: flex;
+    min-height: 72px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 14px 14px 14px 12px;
+    overflow: hidden;
+    border: 1px solid rgba(83, 96, 71, 0.14);
+    border-left: 3px solid var(--plateful-toast-accent);
+    border-radius: 16px;
+    color: #302d24;
+    background: #fffdf7;
+    box-shadow: 0 14px 34px rgba(48, 45, 36, 0.14);
+    font-family: Outfit, sans-serif;
+}
+
+.plateful-toast--error {
+    --plateful-toast-accent: #a64e43;
+    --plateful-toast-tint: #f6e8e4;
+}
+
+.plateful-toast--warning {
+    --plateful-toast-accent: #a77a2e;
+    --plateful-toast-tint: #f5eedb;
+}
+
+.plateful-toast--info {
+    --plateful-toast-accent: #607689;
+    --plateful-toast-tint: #e8eef2;
+}
+
+.Toastify__toast-icon {
+    width: 36px;
+    margin-inline-end: 0;
+}
+
+.plateful-toast-icon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--plateful-toast-accent);
+    background: var(--plateful-toast-tint);
+}
+
+.plateful-toast-icon svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.plateful-toast-body {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    color: #49463d;
+    font-family: Outfit, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+.plateful-toast-body > div:last-child {
+    overflow-wrap: anywhere;
+}
+
+.Toastify__close-button {
+    align-self: flex-start;
+    margin: 2px 0 0 2px;
+    color: #817d70;
+    opacity: 0.7;
+    transition: color 180ms ease, opacity 180ms ease;
+}
+
+.Toastify__close-button:hover {
+    color: #302d24;
+    opacity: 1;
+}
+
+.plateful-toast-progress {
+    height: 3px;
+    background: var(--plateful-toast-accent);
+    opacity: 0.68;
+}
+
+@media (max-width: 600px) {
+    .plateful-toast-container {
+        top: max(72px, env(safe-area-inset-top));
+        right: 12px;
+        left: 12px;
+        width: auto;
+    }
+
+    .plateful-toast {
+        min-height: 64px;
+        margin-bottom: 8px;
+        border-radius: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .Toastify__close-button {
+        transition: none;
+    }
+}

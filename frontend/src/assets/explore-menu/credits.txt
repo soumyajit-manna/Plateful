@@ -1,0 +1,24 @@
+Explore Menu photos
+
+These photos are downloaded from Pexels and bundled locally; the site does not load them from an external image service.
+Pexels license: https://www.pexels.com/license/
+
+Combo: https://www.pexels.com/photo/delicious-indian-cuisine-with-rice-and-curries-35267281/
+Salad: https://www.pexels.com/photo/round-stainless-steel-bowl-with-cooked-meat-and-vegetables-842545/
+Rolls: https://www.pexels.com/photo/meats-and-vegetables-on-black-oval-sizzling-plate-2015191/
+Biryani: https://www.pexels.com/photo/delicious-chicken-biryani-on-wooden-platter-39536492/
+Chicken: https://www.pexels.com/photo/cooked-chicken-on-white-plate-2673353/
+Cake: https://www.pexels.com/photo/slices-of-strawberries-on-top-of-the-cake-11842159/
+Ice Cream: https://www.pexels.com/photo/delicious-pistachio-ice-cream-in-ceramic-bowl-39641643/
+Pizza: https://www.pexels.com/photo/pizza-and-jar-of-flour-19260823/
+Pure Veg: https://www.pexels.com/photo/cooked-food-on-white-ceramic-plate-6065181/
+Sandwich: https://www.pexels.com/photo/toasted-sandwiches-beside-fried-french-fries-11256670/
+Pasta: https://www.pexels.com/photo/food-photography-of-pasta-1438672/
+Deserts: https://www.pexels.com/photo/middle-eastern-dessert-platter-with-assorted-sweets-36355420/
+Noodles: https://www.pexels.com/photo/bowl-of-ramen-with-chopsticks-12015218/
+
+Header photo:
+https://www.pexels.com/photo/traditional-indian-thali-with-assorted-dishes-36885753/
+
+Login and sign-up photo:
+https://www.pexels.com/photo/close-up-of-spaghetti-on-plate-5531093/

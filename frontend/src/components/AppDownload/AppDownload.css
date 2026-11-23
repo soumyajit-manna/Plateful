@@ -1,27 +1,546 @@
-.app-download{
-    margin: auto auto;
-    margin-top: 100px;
-    font-size: max(3vw, 20px);
-    text-align: center;
-    font-weight: 500;
+.app-download {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 72px);
+    min-height: 470px;
+    margin: 82px auto 0;
+    padding: clamp(52px, 6vw, 76px) 0 34px;
+    overflow: visible;
+    border-top: 1px solid rgba(83, 96, 71, 0.16);
+    color: #302d24;
+    background: transparent;
+    scroll-margin-top: 112px;
+}
 
+.app-download::before {
+    position: absolute;
+    top: -150px;
+    right: 0;
+    width: min(470px, 60%);
+    height: min(470px, 60%);
+    border: 1px solid rgba(83, 96, 71, 0.1);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
 }
-.app-download-platforms{
+
+.app-download-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    animation: app-download-copy-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.app-download-eyebrow {
     display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #687454;
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.19em;
+}
+
+.app-download-eyebrow-mark {
+    display: grid;
+    width: 26px;
+    height: 26px;
+    place-items: center;
+    border: 1px solid rgba(83, 96, 71, 0.2);
+    border-radius: 50%;
+    color: #536047;
+    background: #f5f4eb;
+    font-size: 14px;
+    letter-spacing: 0;
+}
+
+.app-download-copy h2 {
+    max-width: 560px;
+    color: #302d24;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: clamp(38px, 4.7vw, 60px);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+}
+
+.app-download-copy h2 span {
+    display: block;
+    color: #536047;
+    font-style: italic;
+}
+
+.app-download-description {
+    max-width: 430px;
+    margin-top: 20px;
+    color: #817d70;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.app-download-platforms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.app-download-platforms a {
+    display: inline-flex;
+    min-height: 58px;
+    align-items: center;
     justify-content: center;
-    gap: max(2vw, 10px);
-    margin-top: 40px;
+    padding: 5px 8px;
+    border: 1px solid rgba(83, 96, 71, 0.14);
+    border-radius: 13px;
+    background: #fffdf7;
+    box-shadow: 0 8px 20px rgba(48, 55, 41, 0.08);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
-.app-download-platforms img{
-    width: max(30vw, 120px);
-    max-width: 180px;
-    transition: 0.5s;
-    cursor: pointer;
+
+.app-download-platforms a:hover {
+    transform: translateY(-4px);
+    border-color: #c2cba8;
+    box-shadow: 0 13px 25px rgba(48, 55, 41, 0.14);
 }
-.app-download-platforms img:hover{
-    transform: scale(1.05);
+
+.app-download-platforms img {
+    display: block;
+    width: 148px;
+    height: auto;
+    transition: transform 220ms ease;
 }
-.highlight-text {
-    color: tomato; 
-    font-weight: bold;
+
+.app-download-platforms a:hover img {
+    transform: scale(1.025);
+}
+
+.app-download-visual {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: 420px;
+    place-items: center;
+    animation: app-download-visual-in 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms both;
+}
+
+.app-download-orbit {
+    position: absolute;
+    border: 1px solid rgba(83, 96, 71, 0.14);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.app-download-orbit-one {
+    width: 330px;
+    height: 330px;
+}
+
+.app-download-orbit-two {
+    width: 250px;
+    height: 250px;
+    border-color: rgba(83, 96, 71, 0.1);
+}
+
+.app-download-phone {
+    position: relative;
+    z-index: 1;
+    width: clamp(215px, 22vw, 250px);
+    padding: 8px;
+    transform: rotate(4deg);
+    will-change: transform;
+    border: 1px solid rgba(219, 225, 198, 0.5);
+    border-radius: 36px;
+    background: linear-gradient(145deg, #707c5b, #3e4935 65%, #23281e);
+    box-shadow:
+        0 30px 60px rgba(12, 16, 11, 0.38),
+        0 0 0 5px rgba(255, 255, 255, 0.04);
+    animation: app-download-phone-float 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 450ms ease;
+}
+
+.app-download-visual:hover .app-download-phone {
+    transform: rotate(0) translateY(-7px);
+    animation-play-state: paused;
+    box-shadow:
+        0 38px 70px rgba(12, 16, 11, 0.42),
+        0 0 0 5px rgba(255, 255, 255, 0.06);
+}
+
+.app-download-phone-screen {
+    min-height: 390px;
+    padding: 20px 14px 14px;
+    overflow: hidden;
+    border-radius: 28px;
+    color: #302d24;
+    background: linear-gradient(155deg, #fffdf7 0%, #f3f2e8 100%);
+}
+
+.app-download-phone-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.app-download-phone-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #302d24;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 19px;
+    letter-spacing: -0.04em;
+}
+
+.app-download-phone-brand > span:last-child {
+    margin-left: -7px;
+    color: #536047;
+    font-style: italic;
+}
+
+.app-download-phone-brand-mark {
+    width: 18px;
+    height: 18px;
+    border: 5px solid #536047;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2px #f3f2e8;
+}
+
+.app-download-phone-menu {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border: 1px solid rgba(83, 96, 71, 0.15);
+    border-radius: 50%;
+    color: #536047;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.app-download-phone-eyebrow {
+    margin-top: 22px;
+    color: #7a8067;
+    font-size: 7px;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+}
+
+.app-download-phone-screen h3 {
+    margin-top: 6px;
+    color: #302d24;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    line-height: 1.04;
+}
+
+.app-download-phone-screen h3 span {
+    color: #536047;
+    font-style: italic;
+}
+
+.app-download-phone-photo {
+    position: relative;
+    height: 168px;
+    margin-top: 14px;
+    overflow: hidden;
+    border: 4px solid #fffdf7;
+    border-radius: 19px;
+    background: #e5e5d7;
+    box-shadow: 0 9px 22px rgba(47, 53, 38, 0.14);
+}
+
+.app-download-phone-photo::after {
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(transparent, rgba(28, 35, 24, 0.6));
+    content: "";
+}
+
+.app-download-phone-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.app-download-visual:hover .app-download-phone-photo img {
+    transform: scale(1.06);
+}
+
+.app-download-phone-photo > span {
+    position: absolute;
+    z-index: 1;
+    right: 12px;
+    bottom: 11px;
+    left: 12px;
+    color: #fffdf7;
+    font-size: 9px;
+    font-weight: 550;
+}
+
+.app-download-phone-bottom {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 13px;
+    color: #5e6252;
+    font-size: 8px;
+    font-weight: 550;
+}
+
+.app-download-phone-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #71805c;
+    box-shadow: 0 0 0 3px rgba(113, 128, 92, 0.12);
+}
+
+.app-download-phone-arrow {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    place-items: center;
+    margin-left: auto;
+    border-radius: 50%;
+    color: #f8f6ed;
+    background: #536047;
+    font-size: 13px;
+}
+
+.app-download-note {
+    position: absolute;
+    z-index: 2;
+    right: -6px;
+    bottom: 67px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.76);
+    border-radius: 999px;
+    color: #3d4434;
+    background: rgba(255, 253, 247, 0.96);
+    box-shadow: 0 12px 28px rgba(14, 18, 12, 0.22);
+    font-size: 10px;
+    font-weight: 600;
+    animation: app-download-note-float 4s ease-in-out infinite;
+}
+
+.app-download-note span {
+    color: #7a875f;
+    font-size: 13px;
+}
+
+.app-download a:focus-visible {
+    outline: 2px solid #536047;
+    outline-offset: 4px;
+}
+
+@keyframes app-download-copy-in {
+    from {
+        transform: translateY(18px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes app-download-visual-in {
+    from {
+        transform: translateY(18px) scale(0.98);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes app-download-phone-float {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) rotate(4deg);
+    }
+
+    50% {
+        transform: translate3d(0, -6px, 0) rotate(4deg);
+    }
+}
+
+@keyframes app-download-note-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@media (max-width: 850px) {
+    .app-download {
+        grid-template-columns: minmax(0, 1fr) minmax(235px, 0.8fr);
+        gap: 20px;
+        padding: 48px 0 28px;
+    }
+
+    .app-download-copy h2 {
+        font-size: clamp(38px, 5.5vw, 52px);
+    }
+
+    .app-download-platforms {
+        gap: 9px;
+    }
+
+    .app-download-platforms img {
+        width: 132px;
+    }
+
+    .app-download-visual {
+        min-height: 390px;
+    }
+
+    .app-download-phone {
+        width: 215px;
+    }
+
+    .app-download-note {
+        right: -12px;
+        bottom: 53px;
+        padding: 10px 12px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 650px) {
+    .app-download {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        min-height: 0;
+        margin-top: 64px;
+        padding: 38px 0 10px;
+    }
+
+    .app-download-eyebrow {
+        margin-bottom: 16px;
+    }
+
+    .app-download-copy h2 {
+        max-width: 460px;
+        font-size: clamp(38px, 9.5vw, 52px);
+    }
+
+    .app-download-description {
+        margin-top: 14px;
+        font-size: 13px;
+    }
+
+    .app-download-platforms {
+        gap: 8px;
+        margin-top: 22px;
+    }
+
+    .app-download-platforms a {
+        min-height: 52px;
+        padding: 4px 6px;
+        border-radius: 11px;
+    }
+
+    .app-download-platforms img {
+        width: clamp(118px, 35vw, 148px);
+    }
+
+    .app-download-visual {
+        min-height: 350px;
+        margin-top: -6px;
+    }
+
+    .app-download-phone {
+        width: 205px;
+    }
+
+    .app-download-phone-screen {
+        min-height: 350px;
+        padding: 17px 13px 12px;
+    }
+
+    .app-download-phone-photo {
+        height: 145px;
+    }
+
+    .app-download-note {
+        right: -2px;
+        bottom: 42px;
+    }
+
+    .app-download-orbit-one {
+        width: 280px;
+        height: 280px;
+    }
+
+    .app-download-orbit-two {
+        width: 215px;
+        height: 215px;
+    }
+}
+
+@media (max-width: 380px) {
+    .app-download {
+        padding: 32px 0 10px;
+    }
+
+    .app-download-platforms {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-download-platforms a {
+        min-width: 156px;
+    }
+}
+
+@media (max-width: 320px) {
+    .app-download-phone {
+        width: clamp(170px, 70vw, 195px);
+    }
+
+    .app-download-orbit-one {
+        width: 220px;
+        height: 220px;
+    }
+
+    .app-download-orbit-two {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-download-copy,
+    .app-download-visual,
+    .app-download-phone,
+    .app-download-note {
+        animation: none;
+    }
+
+    .app-download *,
+    .app-download *::before,
+    .app-download *::after {
+        transition-duration: 0.01ms !important;
+    }
 }
