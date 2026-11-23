@@ -10,6 +10,7 @@ const StoreContextProvider = (props) => {
     const [foodListLoaded, setFoodListLoaded] = useState(false);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
+    const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false)
     const currency = "₹";
     const deliveryCharge = 50;
 
@@ -78,6 +79,7 @@ const StoreContextProvider = (props) => {
                     console.error('Could not load initial app data:', result.reason)
                 }
             })
+            setIsInitialDataLoaded(true)
         }
         loadData()
     }, [])
@@ -86,6 +88,7 @@ const StoreContextProvider = (props) => {
         url,
         food_list,
         foodListLoaded,
+        isInitialDataLoaded,
         menu_list,
         cartItems,
         addToCart,

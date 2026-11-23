@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
 
-    const { getTotalCartAmount, currency, token, food_list, cartItems, url } = useContext(StoreContext)
+    const { getTotalCartAmount, currency, token, food_list, cartItems, url, isInitialDataLoaded } = useContext(StoreContext)
 
     const [data, setData] = useState({
         firstName: '',
@@ -56,19 +56,19 @@ const PlaceOrder = () => {
         }
     }
     const navigate = useNavigate()
-
+    const subtotal = getTotalCartAmount()
 
     useEffect(() => {
+        if (!isInitialDataLoaded) return
+
         if (!token) {
             toast.error("To place an order sign in first")
             navigate('/cart')
-        }
-        else if (getTotalCartAmount() === 0) {
+        } else if (subtotal === 0) {
             navigate('/cart')
         }
-    }, [token])
+    }, [isInitialDataLoaded, token, subtotal, navigate])
 
-    const subtotal = getTotalCartAmount()
     const deliveryFee = subtotal === 0 ? 0 : 20
     const total = subtotal + deliveryFee
     const itemCount = food_list.reduce((count, item) => count + (cartItems[item._id] || 0), 0)
