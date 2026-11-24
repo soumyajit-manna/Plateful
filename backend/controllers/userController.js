@@ -84,12 +84,14 @@ const registerUser = async (req, res) => {
     //save user in DB
     const user = await newUser.save();
 
-    // Send welcome email
-    await sendWelcomeEmail(email, name); // Send email after user registration
-
     //And create a json webtoken
     const token = createToken(user._id);
     res.json({ success: true, token });
+
+    // Email delivery should not hold the registration response open.
+    sendWelcomeEmail(email, name).catch((error) => {
+      console.error("Error sending welcome email:", error);
+    });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Internal server error" });
