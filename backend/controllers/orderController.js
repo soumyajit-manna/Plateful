@@ -1,7 +1,7 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe";
-import nodemailer from "nodemailer";
+import { sendOrderEmail } from "../utils/emailService.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -58,14 +58,6 @@ const placeOrder = async (req, res) => {
   }
 };
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
 const verifyOrder = async (req, res) => {
   const { orderId, success } = req.body;
   try {
@@ -79,20 +71,12 @@ const verifyOrder = async (req, res) => {
         .map((item) => `${item.name} x ${item.quantity}`)
         .join(", ");
 
-      // Send email to user
-      const mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: user.email,
-        subject: "Order Confirmation from Tomato",
-        text: `Your payment has been successfully processed for your order with ID ${orderId}.\n\n You have ordered: ${foodDetails}.\n\n Thank you for choosing Tomato!\n\n\n Your order is now being processed.`,
-      };
-
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Email sent: " + info.response);
-        }
+      sendOrderEmail(
+        user.email,
+        "Your Plateful order is confirmed",
+        `Your payment has been processed for order ${orderId}. Items: ${foodDetails}. Your order is now being processed. Thank you for choosing Plateful!`
+      ).catch((error) => {
+        console.error("Error sending order confirmation email:", error);
       });
 
       res.json({ success: true, message: "Paid" });
@@ -145,22 +129,14 @@ const updateStatus = async (req, res) => {
       .join(", ");
 
     // Prepare the message content
-    const message = `Your order with ID ${orderId} is now marked as "${status}".\n\n You have ordered: ${foodDetails}.\n\n Thank you for choosing Tomato!`;
+    const message = `Your order ${orderId} is now marked as "${status}". Items: ${foodDetails}. Thank you for choosing Plateful!`;
 
-    // Send email to user
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: user.email,
-      subject: `Your Order Status has been Updated`,
-      text: message,
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log("Email sent: " + info.response);
-      }
+    sendOrderEmail(
+      user.email,
+      "Your Plateful order status has been updated",
+      message
+    ).catch((error) => {
+      console.error("Error sending order status email:", error);
     });
 
     res.json({ success: true, message: "Status Updated" });
