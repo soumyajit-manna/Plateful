@@ -1,12 +1,67 @@
-.navbar{
+.navbar {
+    position: sticky;
+    z-index: 20;
+    top: 0;
     display: flex;
-    justify-content: space-between;
+    min-height: 76px;
     align-items: center;
-    padding: 8px 4%;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px clamp(18px, 4vw, 54px);
+    border-bottom: 1px solid rgba(255, 250, 240, 0.12);
+    color: #fffaf0;
+    background:
+        radial-gradient(ellipse at 76% -70%, rgba(227, 207, 152, 0.2), transparent 42%),
+        linear-gradient(112deg, #303d2a, #46543a 62%, #3b4932);
+    box-shadow: 0 10px 28px rgba(38, 48, 32, 0.16);
 }
-.navbar .logo{
-    width: max(10%, 80px);
+
+.navbar::before {
+    display: block;
+    padding-left: 46px;
+    background:
+        radial-gradient(circle at 16px 17px, #536047 0 4px, transparent 4.5px),
+        radial-gradient(circle at 16px 17px, transparent 0 11px, #e3cf98 11.5px 13px, transparent 13.5px);
+    color: #fffaf0;
+    content: "Plateful\A ADMIN CONSOLE";
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 24px;
+    line-height: 1.05;
+    white-space: pre;
 }
-.navbar .profile{
-    width: 40px;
+
+.navbar .logo {
+    display: none;
+}
+
+.navbar .profile {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border: 2px solid rgba(255, 250, 240, 0.62);
+    border-radius: 50%;
+    background: rgba(255, 250, 240, 0.12);
+    object-fit: cover;
+    box-shadow: 0 5px 14px rgba(20, 27, 17, 0.22);
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        min-height: 66px;
+        padding: 10px 17px;
+    }
+
+    .navbar::before {
+        padding-left: 40px;
+        background:
+            radial-gradient(circle at 14px 15px, #536047 0 3px, transparent 3.5px),
+            radial-gradient(circle at 14px 15px, transparent 0 9px, #e3cf98 9.5px 11px, transparent 11.5px);
+        font-size: 21px;
+    }
+
+    .navbar .profile {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
 }
