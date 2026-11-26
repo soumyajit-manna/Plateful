@@ -59,8 +59,22 @@ const StoreContextProvider = (props) => {
     }
 
     const loadCartData = async (token) => {
-        const response = await axios.post(url + "/api/cart/get", {}, { headers: token });
-        setCartItems(response.data.cartData);
+        try {
+            const response = await axios.post(url + "/api/cart/get", {}, { headers: token });
+            const cartData = response.data.cartData;
+            if (!response.data.success || !cartData || typeof cartData !== 'object' || Array.isArray(cartData)) {
+                throw new Error(response.data.message || 'Could not load cart data');
+            }
+            setCartItems(cartData);
+        } catch (error) {
+            if (error.response?.status === 401) {
+                localStorage.removeItem('token');
+                setToken('');
+                setCartItems({});
+                return;
+            }
+            throw error;
+        }
     }
 
     useEffect(() => {
