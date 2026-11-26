@@ -4,6 +4,9 @@ import userModel from "../models/userModel.js";
 const addToCart = async (req, res) => {
   try {
     let userData = await userModel.findById(req.body.userId);
+    if (!userData) {
+      return res.status(401).json({ success: false, message: "User not found" });
+    }
     let cartData = await userData.cartData;
     if (!cartData[req.body.itemId]) {
       cartData[req.body.itemId] = 1;
@@ -22,6 +25,9 @@ const addToCart = async (req, res) => {
 const removeFromCart = async (req, res) => {
   try {
     let userData = await userModel.findById(req.body.userId);
+    if (!userData) {
+      return res.status(401).json({ success: false, message: "User not found" });
+    }
     let cartData = await userData.cartData;
     if (cartData[req.body.itemId] > 0) {
       cartData[req.body.itemId] -= 1;
@@ -38,6 +44,9 @@ const removeFromCart = async (req, res) => {
 const getCart = async (req, res) => {
   try {
     let userData = await userModel.findById(req.body.userId);
+    if (!userData) {
+      return res.status(401).json({ success: false, message: "User not found" });
+    }
     let cartData = await userData.cartData;
     res.json({ success: true, cartData });
   } catch (error) {
