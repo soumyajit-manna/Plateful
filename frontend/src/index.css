@@ -29,6 +29,12 @@ a{
   margin: auto;
 }
 
+@media (max-width: 700px) {
+  .app {
+    width: calc(100% - 32px);
+  }
+}
+
 @keyframes fadeIn{
   0%{
     opacity: 0;
