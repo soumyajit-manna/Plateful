@@ -5,7 +5,7 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const url = "https://tomato-backend-skqy.onrender.com"
+    const url = "https://plateful-ymms.onrender.com"
     const [food_list, setFoodList] = useState([]);
     const [foodListLoaded, setFoodListLoaded] = useState(false);
     const [cartItems, setCartItems] = useState({});

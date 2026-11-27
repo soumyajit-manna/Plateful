@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
-  const url = 'https://tomato-backend-skqy.onrender.com'
+  const url = 'https://plateful-ymms.onrender.com'
 
   return (
     <div>

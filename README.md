@@ -8,7 +8,7 @@ Plateful is a JavaScript monorepo containing a customer food-ordering website, a
 
 [https://plateful-food.vercel.app/](https://plateful-food.vercel.app/)
 
-The customer and admin apps call the API at `https://tomato-backend-skqy.onrender.com`. That is the existing Render service hostname; the legacy word in the hostname is not the product's current brand. Do not change it unless the API service itself is migrated.
+The customer and admin apps call the API at `https://plateful-ymms.onrender.com`, the current Render service hostname.
 
 ## What is in this repository?
 
