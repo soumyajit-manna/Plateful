@@ -1,3 +1,16 @@
+.home-page {
+    overflow-x: clip;
+}
+
+.home-page > :not(.header) {
+    width: min(
+        var(--site-content-max),
+        calc(100% - var(--site-content-gutter) - var(--site-content-gutter))
+    );
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .home-how {
     margin: 0 0 76px;
 }
@@ -112,7 +125,8 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: clamp(18px, 3vw, 40px);
-    margin: 0;
+    max-width: 1020px;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
 }
@@ -124,8 +138,8 @@
 .home-how-steps::before {
     position: absolute;
     top: 27px;
-    right: 12%;
-    left: 7%;
+    right: 15.5%;
+    left: 15.5%;
     border-top: 1px dashed rgba(83, 96, 71, 0.28);
     content: "";
     pointer-events: none;
@@ -150,6 +164,8 @@
     justify-content: center;
     gap: 4px;
     margin-bottom: 19px;
+    margin-left: auto;
+    margin-right: auto;
     border: 1px solid rgba(83, 96, 71, 0.26);
     border-radius: 50%;
     color: #536047;
@@ -187,14 +203,16 @@
     font-size: 22px;
     font-weight: 400;
     letter-spacing: -0.015em;
+    text-align: center;
 }
 
 .home-how-step p {
     max-width: 290px;
-    margin-top: 8px;
+    margin: 8px auto 0;
     color: #817d70;
     font-size: 12px;
     line-height: 1.75;
+    text-align: center;
 }
 
 .home-promise {
@@ -469,7 +487,7 @@
         top: 28px;
         right: auto;
         bottom: 56px;
-        left: 33px;
+        left: calc(50% - 0.5px);
         width: 0;
         border-top: 0;
         border-left: 1px dashed rgba(83, 96, 71, 0.28);

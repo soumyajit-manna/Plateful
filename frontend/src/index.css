@@ -2,8 +2,12 @@
 *{
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
   font-family: Outfit;
+}
+:root {
+  --site-content-max: 1440px;
+  --site-content-gutter: clamp(16px, 2.1vw, 24px);
 }
 html {
   scroll-behavior: smooth;
@@ -25,14 +29,15 @@ a{
   color: inherit;
 }
 .app{
-  width: 80%;
-  margin: auto;
+  width: 100%;
 }
 
-@media (max-width: 700px) {
-  .app {
-    width: calc(100% - 32px);
-  }
+.app-page {
+  width: min(
+    var(--site-content-max),
+    calc(100% - var(--site-content-gutter) - var(--site-content-gutter))
+  );
+  margin: auto;
 }
 
 @keyframes fadeIn{

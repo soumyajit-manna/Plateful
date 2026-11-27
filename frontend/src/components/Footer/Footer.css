@@ -3,7 +3,7 @@
     isolation: isolate;
     overflow: hidden;
     margin-top: 112px;
-    padding: 0 32px;
+    padding: 0 var(--site-content-gutter);
     color: #f5f3e9;
     background:
         radial-gradient(ellipse at 86% 4%, rgba(119, 133, 87, 0.2), transparent 36%),
@@ -36,7 +36,7 @@
 }
 
 .footer-inner {
-    width: min(1200px, 100%);
+    width: min(var(--site-content-max), 100%);
     margin: 0 auto;
 }
 

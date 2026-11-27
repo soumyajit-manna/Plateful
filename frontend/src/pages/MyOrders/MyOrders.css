@@ -1,5 +1,5 @@
 .my-orders {
-    max-width: 1080px;
+    max-width: var(--site-content-max);
     margin: 52px auto 110px;
     color: #303127;
 }

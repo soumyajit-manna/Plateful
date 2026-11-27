@@ -9,7 +9,7 @@ const Home = () => {
 
     const [category, setCategory] = useState('All')
     return (
-        <div>
+        <div className="home-page">
             <Header />
             <ExploreMenu category={category} setCategory={setCategory} />
             <FoodDisplay category={category} />
@@ -104,7 +104,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
             <section className="home-promise" aria-labelledby="home-promise-title">
                 <div className="home-promise-heading">
                     <p className="home-promise-eyebrow">THE PLATEFUL PROMISE</p>
