@@ -4,7 +4,7 @@ import { StoreContext } from '../../context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem';
 
 const FoodDisplay = ({ category }) => {
-    const { food_list } = useContext(StoreContext);
+    const { food_list, foodListLoaded } = useContext(StoreContext);
     const visibleFood = food_list.filter((item) => category === 'All' || category === item.category);
 
     return (
@@ -30,20 +30,27 @@ const FoodDisplay = ({ category }) => {
                 </div>
             </div>
 
-            <div className='food-display-list'>
-                {visibleFood.map((item, index) => (
-                    <FoodItem
-                        key={item._id}
-                        id={item._id}
-                        name={item.name}
-                        description={item.description}
-                        price={item.price}
-                        image={item.image}
-                        category={item.category}
-                        imagePriority={index < 3}
-                        style={{ animationDelay: `${Math.min(index * 35, 280)}ms` }}
-                    />
-                ))}
+            <div className='food-display-list' aria-busy={!foodListLoaded}>
+                {!foodListLoaded ? (
+                    <div className='food-display-loading' role='status'>
+                        <span className='food-display-loading-spinner' aria-hidden='true' />
+                        <span>Getting your dishes ready...</span>
+                    </div>
+                ) : (
+                    visibleFood.map((item, index) => (
+                        <FoodItem
+                            key={item._id}
+                            id={item._id}
+                            name={item.name}
+                            description={item.description}
+                            price={item.price}
+                            image={item.image}
+                            category={item.category}
+                            imagePriority={index < 3}
+                            style={{ animationDelay: `${Math.min(index * 35, 280)}ms` }}
+                        />
+                    ))
+                )}
             </div>
         </section>
     );
